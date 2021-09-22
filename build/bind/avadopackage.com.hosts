@@ -7,11 +7,11 @@ avadopackage.com		IN SOA	avadopackage.com. administrator.avadopackage.com. (
 				604800     ; expire (1 week)
 				38400      ; minimum (10 hours 40 minutes)
 				)
-			NS	172.33.1.2
+			NS	172.30.0.2
 $ORIGIN avadopackage.com.
-admin			A	172.33.1.9
-my			A	172.33.1.9
-ethchain		A	172.33.1.6
-fullnode		A	172.33.1.6
-ipfs			A	172.33.1.5
+admin			A	172.30.0.9
+my			A	172.30.0.9
+ethchain		A	172.30.0.6
+fullnode		A	172.30.0.6
+ipfs			A	172.30.0.5
 
