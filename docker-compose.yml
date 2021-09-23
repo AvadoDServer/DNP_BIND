@@ -1,29 +1,26 @@
 version: '3.4'
-services:
-    bind.dnp.dappnode.eth:
-        container_name: DAppNodeCore-bind.dnp.dappnode.eth
-        image: 'bind.dnp.dappnode.eth:10.1'
-        restart: always
-        volumes:
-            - 'binddnpdappnodeeth_data:/etc/bind'
-        env_file:
-            - bind.dnp.dappnode.eth.env
-        networks:
-            avado:
-                ipv4_address: 172.30.0.2
-        dns: 172.30.0.2
-        labels:
-            dappnode.dnp.origin: QmYmtm9nFJnNkKoHoiCpFPn49MwDtaJPmcaVEAPFg7qoEH
-        logging:
-            options:
-                max-size: 10m
-                max-file: '3'
-volumes:
-    binddnpdappnodeeth_data: {}
 networks:
   avado:
-        driver: bridge
-        ipam:
-            config:
-                -
-                    subnet: 172.30.0.0/22  
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.0.0/22
+volumes:
+  binddnpdappnodeeth_data: {}
+services:
+  bind.dnp.dappnode.eth:
+    build: ./build
+    image: 'bind.dnp.dappnode.eth:10.1'
+    container_name: DAppNodeCore-bind.dnp.dappnode.eth
+    restart: always
+    volumes:
+      - 'binddnpdappnodeeth_data:/etc/bind'
+    environment:
+      - EXTRA_OPTS=
+    networks:
+      avado:
+        ipv4_address: 172.30.0.2
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
