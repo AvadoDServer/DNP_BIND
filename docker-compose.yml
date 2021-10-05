@@ -1,17 +1,13 @@
 version: '3.5'
 networks:
   avado:
-    name: avado
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.30.0.0/22
+    external: true
 volumes:
   binddnpdappnodeeth_data: {}
 services:
   bind.dnp.dappnode.eth:
     build: ./build
-    image: 'bind.dnp.dappnode.eth:10.1'
+    image: 'bind.dnp.dappnode.eth:10.0.6'
     container_name: DAppNodeCore-bind.dnp.dappnode.eth
     restart: always
     volumes:
