@@ -1,6 +1,7 @@
-FROM alpine
+FROM --platform=linux/amd64 alpine
 
-RUN apk --no-cache add bind dnscrypt-proxy supervisor && \
+#RUN apk --no-cache add bind dnscrypt-proxy supervisor && \
+RUN apk --no-cache add bind supervisor && \
     mkdir -p /var/bind/log
 
 # COPY bind /etc/bind/
@@ -8,7 +9,7 @@ COPY bind /config/
 COPY entrypoint.sh /usr/bin/
 
 COPY supervisord.conf .
-COPY dnscrypt-proxy.toml .
+# COPY dnscrypt-proxy.toml .
 
 EXPOSE 53/udp
 
