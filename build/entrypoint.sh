@@ -11,4 +11,7 @@ echo "copying hosts/config"
 cp /config/*.hosts /etc/bind/
 cp /config/named.conf /etc/bind/named.conf
 
-supervisord -c /supervisord.conf
+# exec: supervisord replaces this shell as PID 1 and handles SIGTERM (stops
+# named, then exits). A shell PID 1 ignored SIGTERM, so every bind update
+# waited the full docker stop timeout (180 s) before the container was killed.
+exec supervisord -c /supervisord.conf
