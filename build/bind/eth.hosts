@@ -1,11 +1,11 @@
 $ORIGIN .
 $TTL 38400	; 10 hours 40 minutes
 eth			IN SOA	eth. admin.eth. (
-				1515764906 ; serial
+				2026110501 ; serial
 				10800      ; refresh (3 hours)
 				3600       ; retry (1 hour)
 				604800     ; expire (1 week)
-				38400      ; minimum (10 hours 40 minutes)
+				60         ; minimum: "does not exist" answers are cached for 1 minute only
 				)
 			NS	172.33.1.2.eth.
 $ORIGIN eth.
